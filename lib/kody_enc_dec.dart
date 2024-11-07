@@ -37,16 +37,12 @@ class EncryptionHelper {
     decrypter.init(false, PrivateKeyParameter<RSAPrivateKey>(rsaPrivateKey!));
   }
 
-  String? aesSecret; // The secret key for AES
-  String? aesSalt; // The salt for AES key derivation
   PaddedBlockCipherImpl encryptCipher = PaddedBlockCipherImpl(PKCS7Padding(), CBCBlockCipher(AESEngine())); // Cipher for AES encryption
   PaddedBlockCipherImpl decryptCipher = PaddedBlockCipherImpl(PKCS7Padding(), CBCBlockCipher(AESEngine())); // Cipher for AES decryption
   PBKDF2KeyDerivator pbkdf2 = PBKDF2KeyDerivator(HMac(SHA256Digest(), 64));
 
   /// Initialize AES keys using plain secret and salt
   String initAESKeys(String aesSecret, String aesSalt) {
-    this.aesSecret = aesSecret; // Store the AES secret
-    this.aesSalt = aesSalt; // Store the AES salt
     final secretKey = getKeyFromPlainSecretKeyAndSalt(aesSecret, aesSalt); // Derive the AES key
     return secretKey;
   }
