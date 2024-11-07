@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'kody_enc_dec.dart';
+
 /// Extension methods for String to handle PEM keys and basic encryption/decryption
 extension StringExtension on String {
   String get keyFromPem {
@@ -26,5 +28,21 @@ extension StringExtension on String {
 
   String get basicEncryption {
     return base64Encode(utf8.encode(this));
+  }
+
+  String encryptAES({required String aesSecret, required String aesSalt}) {
+    return EncryptionHelper.instance.encryptAES(this, aesSecret: aesSecret, aesSalt: aesSalt);
+  }
+
+  String decryptAES({required String aesSecret, required String aesSalt}) {
+    return EncryptionHelper.instance.decryptAES(this, aesSecret: aesSecret, aesSalt: aesSalt);
+  }
+
+  String get encryptRSA {
+    return EncryptionHelper.instance.encryptRSA(this);
+  }
+
+  String get decryptRSA {
+    return EncryptionHelper.instance.decryptRSA(this);
   }
 }
