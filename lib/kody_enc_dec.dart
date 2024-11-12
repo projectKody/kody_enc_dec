@@ -49,6 +49,9 @@ class EncryptionHelper {
 
   /// Function to perform AES encryption with a given plain text
   String encryptAES(String plainText, {required String aesSecret, required String aesSalt}) {
+    if(plainText.isEmpty){
+      return plainText;
+    }
     try {
       _printDate('Plain Text:$plainText');
       // Convert plain text to bytes
@@ -71,6 +74,9 @@ class EncryptionHelper {
 
   /// Function to perform AES decryption with a given encrypted text
   String decryptAES(String encryptedTextBase64, {required String aesSecret, required String aesSalt}) {
+    if(encryptedTextBase64.isEmpty){
+      return encryptedTextBase64;
+    }
     try {
       _printDate('Encrypted Data:$encryptedTextBase64');
       // Decode the Base64 encrypted text to get bytes
