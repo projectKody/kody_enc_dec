@@ -53,7 +53,7 @@ class EncryptionHelper {
       return plainText;
     }
     try {
-      _printDate('Plain Text:$plainText');
+      // _printDate('Plain Text:$plainText');
       // Convert plain text to bytes
       final plainTextBytes = utf8.encode(plainText);
       final key = base64.decode(aesSecret); // Get the derived AES key
@@ -64,10 +64,10 @@ class EncryptionHelper {
 
       // Convert the encrypted data to Base64 for easy readability
       String encryptedData = base64.encode(encryptedBytes);
-      _printDate('Encrypted Data:$encryptedData');
+      // _printDate('Encrypted Data:$encryptedData');
       return encryptedData;
     } on Exception catch (e) {
-      _printDate(e.toString());
+      // _printDate(e.toString());
       return e.toString();
     }
   }
@@ -78,7 +78,7 @@ class EncryptionHelper {
       return encryptedTextBase64;
     }
     try {
-      _printDate('Encrypted Data:$encryptedTextBase64');
+      // _printDate('Encrypted Data:$encryptedTextBase64');
       // Decode the Base64 encrypted text to get bytes
       final encryptedBytes = base64.decode(encryptedTextBase64);
       // Decrypt the data
@@ -88,7 +88,7 @@ class EncryptionHelper {
       final decryptedBytes = decryptCipher.process(Uint8List.fromList(encryptedBytes));
       // Convert decrypted bytes to string (UTF-8 format)
       String decryptedData = utf8.decode(decryptedBytes);
-      _printDate('Decrypted Data:$decryptedData');
+      // _printDate('Decrypted Data:$decryptedData');
       return decryptedData;
     } catch (e) {
       return "Decryption failed: Exception: ${e.toString()}";
