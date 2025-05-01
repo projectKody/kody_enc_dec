@@ -16,8 +16,8 @@ void main() {
 
     setUpAll(() async {
       // Initialize RSA and AES keys before tests
-      await helper.initRSAEncryptor(rsaPublicKey);
-      await helper.initRSADecrypt(rsaPrivateKey);
+      helper.initRSAEncryptor(rsaPublicKey);
+      helper.initRSADecrypt(rsaPrivateKey);
       aesPassword = helper.initAESKeys(aesSecret, aesSalt);
     });
 
