@@ -26,13 +26,13 @@ class EncryptionHelper {
   RSAPrivateKey? rsaPrivateKey;
 
   /// Initialize [RSAPublicKey] for encryption
-  Future<void> initRSAEncryptor(String publicKey) async {
+  void initRSAEncryptor(String publicKey) {
     rsaPublicKey = CryptoUtils.rsaPublicKeyFromPem(publicKey.publicKeyToPem);
     encrypter.init(true, PublicKeyParameter<RSAPublicKey>(rsaPublicKey!));
   }
 
   /// Initialize [RSAPrivateKey] for decryption
-  Future<void> initRSADecrypt(String privateKey) async {
+  void initRSADecrypt(String privateKey) {
     rsaPrivateKey = CryptoUtils.rsaPrivateKeyFromPem(privateKey.privateKeyToPem);
     decrypter.init(false, PrivateKeyParameter<RSAPrivateKey>(rsaPrivateKey!));
   }
