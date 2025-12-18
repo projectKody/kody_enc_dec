@@ -127,7 +127,6 @@ class EncryptionHelper {
   Future<(String, String)> generateKey() async {
     String publicKey = await rootBundle.loadString('packages/kody_enc_dec/lib/asset/pb.txt');
     String privateKey = await rootBundle.loadString('packages/kody_enc_dec/lib/asset/pr.txt');
-    print(publicKey);
     return (utf8.decode(base64Decode(publicKey)), utf8.decode(base64Decode(privateKey)));
   }
 
