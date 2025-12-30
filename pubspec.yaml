@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  pointycastle: ^3.4.1
-  basic_utils: ^3.1.0
+  pointycastle: 4.0.0
+  basic_utils:
 
 dev_dependencies:
   flutter_test:
